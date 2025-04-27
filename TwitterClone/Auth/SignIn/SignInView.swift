@@ -25,6 +25,9 @@ struct SignInView: View {
                 orSeparator()
                 LoginInputs(email: $email, password: $password)
                 LoginButton()
+                Spacer()
+                FooterText()
+                
             }
         }
     }
@@ -83,9 +86,23 @@ struct LoginButton: View {
                 .foregroundColor(.white)
                 .padding()
                 .frame(width: (UIScreen.main.bounds.width) - 100, height: 50)
-                .background(.blue)
+                .background(Color(UIColor(red: 29/255, green: 161/255, blue: 242/255, alpha: 1.0)))
                 .cornerRadius(15)
                 .padding()
+        }
+    }
+}
+
+struct FooterText: View {
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+        HStack {
+            Text("Don't have an account?")
+            Button("Sign up") {
+                presentationMode.wrappedValue.dismiss()
+            }
+            .foregroundColor(Color(UIColor(red: 29/255, green: 161/255, blue: 242/255, alpha: 1.0)))
         }
     }
 }
