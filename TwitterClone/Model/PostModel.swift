@@ -29,6 +29,25 @@ final class PostModel {
         self.views = views
         self.postImage = postImage
     }
+    
+    func relativeTimestamp() -> String {
+         let calendar = Calendar.current
+         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self.timestamp, to: Date())
+         
+         if let years = components.year, years > 0 {
+             return "\(years)y ago"
+         } else if let months = components.month, months > 0 {
+             return "\(months)m ago"
+         } else if let days = components.day, days > 0 {
+             return "\(days)d ago"
+         } else if let hours = components.hour, hours > 0 {
+             return "\(hours)h ago"
+         } else if let minutes = components.minute, minutes > 0 {
+             return "\(minutes)m ago"
+         } else {
+             return "Just now"
+         }
+     }
 }
 
 //mock data
